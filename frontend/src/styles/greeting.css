@@ -1,0 +1,17 @@
+.greetingBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    
+    margin: 15px 15px;
+}
+
+.backButton {
+    display: flex;
+    background-color: #fff;
+    border: none;
+}
+
+.clientName {
+    color: #077C6E;
+}  
