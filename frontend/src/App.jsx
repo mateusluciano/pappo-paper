@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       { <Header /> }
-      { <Greeting clientName="Mateus" />}
+      { <Greeting clientName="" />}
       { <Checkout /> }
       <hr className="divisor" />
       { <Menu /> }

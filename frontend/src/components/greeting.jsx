@@ -1,5 +1,7 @@
+import { Typewriter } from 'react-simple-typewriter';
 import Back from '../assets/back.svg?react';
 import '../styles/greeting.css';
+
 
 export function Greeting({clientName, onBack}) {
     return (
@@ -10,7 +12,14 @@ export function Greeting({clientName, onBack}) {
 
             {clientName && (
                 <p className="welcomeText">
-                Olá, <span className="clientName">{clientName}!</span> :)
+                Olá, <span className="clientName">
+                  <Typewriter
+                    words={[clientName]}
+                    loop={false}
+                    typeSpeed={135}
+                    delaySpeed={500}
+                  />
+                </span> :)
               </p>
             )}
         </div>
