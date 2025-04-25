@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Koulen-Regular';
+  src: url('../assets/fonts/Koulen-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'JosefinSans-Regular';
+  src: url('../assets/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0px;
+  padding: 0px;
+  
+  font-family: 'JosefinSans-Regular', sans-serif;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.divisor {
+  width: 93vw;
+  height: 1.45px;
+  background-color: #077C6E;
+  border-radius: 50px;
+}

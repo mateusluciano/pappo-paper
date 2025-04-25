@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Koulen-Regular';
+    src: url('../assets/fonts/Koulen-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'JosefinSans-Regular';
+    src: url('../assets/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+}
+
+.checkout {
+    margin: 30px 15px;
+    padding: 20px;
+
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #2020205d;
+    border-radius: 10px;
+}
+
+h2 {
+    margin: 0px 0px 20px 0px;
+
+    font-family: 'JosefinSans-Regular', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+
+    text-transform: uppercase;
+    color: #202020;
+}
+
+.textCheck {
+    font-family: 'JosefinSans-Regular', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 300;
+
+    text-align: center;
+    color: #202020;
+
+    width: 50vw;
+    margin: 0px auto;
+}

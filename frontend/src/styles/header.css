@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Koulen-Regular';
+    src: url('../assets/fonts/Koulen-Regular.ttf') format('truetype');
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 10vh;
+    max-height: 15vh;
+
+    padding: 0px 15px;
+
+    background-color: #fff;
+    border-bottom: 4px solid #1FC4B1;
+}
+
+h1 {
+    font-family: 'Koulen-Regular', sans-serif;
+    font-size: 2.5rem;
+    color: #202020;
+    font-weight: 300;
+}
