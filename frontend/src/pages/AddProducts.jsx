@@ -7,7 +7,7 @@ function AddProduct() {
       <>
       { <Header /> }
       { <Greeting clientName="Admin" />}
-      <h3 className="basic">Adicionar Produtos</h3>
+      <h3 className="basicTitle">Adicionar Produtos</h3>
       { <MeuFormulario /> }
       </>
     );

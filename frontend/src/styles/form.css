@@ -12,7 +12,7 @@
   height: 30px;
   padding: 5px 8px;
   border-radius: 7px;
-  border: 2.25px solid #077C6E;
+  border: 1.85px solid #202020;
   background-color: #ffffff;
 
   color: #202020;
@@ -24,11 +24,11 @@
 
 
 #inputForm30 {
-  width: 35vw;
+  width: 36vw;
 }
 
 #inputForm50 {
-  width: 45vw;
+  width: 40vw;
 }
 
 #inputForm60 {
@@ -97,9 +97,16 @@
 }
 
 .inputFormDescricao {
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box; /* muito importante! */
+  padding: 0;
+  margin: 0;
 }
+
 #inputTextarea2 {
-  width: 80vw;
+  width: 100%;
+  max-width: 100%;
   height: 8vh;
+  box-sizing: border-box; /* Faz o width considerar o padding/border */
 }

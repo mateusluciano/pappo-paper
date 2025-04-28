@@ -7,6 +7,7 @@ export function MeuFormulario() {
   const [nome, setNome] = useState('');
   const [categoria, setCategoria] = useState('');
   const [cBarra, setcBarra] = useState('');
+  const [cSis, setcSis] = useState('');
   const [precoCompra, setPrecoCompra] = useState('');
   const [precoVenda, setPrecoVenda] = useState('');
   const [estoque, setEstoque] = useState('');
@@ -73,13 +74,24 @@ export function MeuFormulario() {
     
 
       
-        <input id='inputForm100' className='inputForm'
+        <input id='inputForm50' className='inputForm'
         type='number' placeholder='Código de Barras do Produto'
         value={cBarra}
         onChange={(e) => setcBarra(e.target.value)}
         />
 
-              {/* Input de Preço de Compra */}
+
+        <input
+        id='inputForm50'
+        className='inputForm'
+        type="text"
+        placeholder="Código do Produto"
+        value={cSis}
+        />
+
+
+
+        {/* Input de Preço de Compra */}
       <div style={{ position: 'relative' }}>
         <span className="prefixo-reais">R$</span>
         <input
@@ -120,7 +132,7 @@ export function MeuFormulario() {
 
 
       <input
-        id='inputForm30'
+        id='inputForm50'
         className='inputForm'
         type='text'
         value={`Estoque Atual: ${estoqueAtual}`}
