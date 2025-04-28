@@ -1,0 +1,105 @@
+.dynamicForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  margin: 0px 15px;
+}
+
+.inputForm {
+  height: 30px;
+  padding: 5px 8px;
+  border-radius: 7px;
+  border: 2.25px solid #077C6E;
+  background-color: #ffffff;
+
+  color: #202020;
+  font-family: 'JosefinSans-Regular', sans-serif;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+
+
+#inputForm30 {
+  width: 35vw;
+}
+
+#inputForm50 {
+  width: 45vw;
+}
+
+#inputForm60 {
+  width: 55vw;
+}
+  
+#inputForm100 {
+  width: 100vw;
+}
+
+#inputGeral {
+  height: 30px;
+}  
+
+
+.btSubmit {
+  height: 40px;
+  width: 45vw;
+  border-radius: 7px;
+  border: none;
+  background-color: #0c9c8b;
+  color: #ffffff;
+  font-family: 'JosefinSans-Regular', sans-serif;
+  font-weight: 800;
+  font-size: 0.85em;
+  text-transform: uppercase;
+
+  padding: 20px 20px 30px 20px;
+}
+
+.btSubmit:hover, #btSubmit2:hover {
+  background-color: #09866d;
+  cursor: pointer;
+}
+
+.btSubmit:active, #btSubmit2:active {
+  background-color: #005b49;
+  cursor: pointer;
+}
+
+#btSubmit2 {
+  background-color: #005b49;
+}
+
+
+
+#inputFormSelect {
+  height: 44px;
+  width: 30vw;
+}
+
+.prefixo-reais {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.72em;
+  color: #cacaca;
+}
+
+
+#inputTextarea {
+  color: #005b49;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.inputFormDescricao {
+  width: 100vw;
+}
+#inputTextarea2 {
+  width: 80vw;
+  height: 8vh;
+}

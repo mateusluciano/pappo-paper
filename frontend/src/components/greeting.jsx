@@ -15,7 +15,6 @@ export function Greeting({clientName, onBack}) {
                 Olá, <span className="clientName">
                   <Typewriter
                     words={[clientName]}
-                    loop={false}
                     typeSpeed={135}
                     delaySpeed={500}
                   />

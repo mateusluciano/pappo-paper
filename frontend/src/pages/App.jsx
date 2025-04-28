@@ -1,20 +1,18 @@
-import '../styles/App.css'
-import { Header } from '../components/header'
-import { Checkout } from '../components/checkout'
-import { Menu } from '../components/menu'
-import { Greeting } from '../components/greeting' 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './Home'; 
+import Admin from './Admin';
+import AddProduct from './AddProducts';
 
 function App() {
-
   return (
-    <>
-      { <Header /> }
-      { <Greeting clientName="Mateus de Oliveira" />}
-      { <Checkout /> }
-      <hr className="divisor" />
-      { <Menu /> }
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/adicionar-produtos" element={<AddProduct />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
