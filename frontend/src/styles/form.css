@@ -1,15 +1,16 @@
+/* --- Layout principal do formulário --- */
 .dynamicForm {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 10px;
   flex-wrap: wrap;
-
-  margin: 0px 15px;
+  gap: 10px;
+  justify-content: space-between;
+  margin: 0 15px;
 }
 
+/* --- Inputs gerais --- */
 .inputForm {
-  height: 30px;
+  height: 40px;
+  
   padding: 5px 8px;
   border-radius: 7px;
   border: 1.85px solid #202020;
@@ -19,38 +20,52 @@
   font-family: 'JosefinSans-Regular', sans-serif;
   font-size: 0.8em;
   text-transform: uppercase;
+  box-sizing: border-box;
 }
 
+/* --- Tamanhos de input padronizados --- */
+.input-micro {
+  width: 21vw;
+}
 
-#inputForm20 {
+.input-small {
   width: 25vw;
 }
 
-#inputForm30 {
+.input-medium {
   width: 36vw;
 }
 
-#inputForm50 {
+.input-large {
   width: 40vw;
 }
 
-#inputForm60 {
+.input-xlarge {
   width: 55vw;
 }
 
-#inputForm70 {
-  width: 60vw;
-}
-  
-#inputForm100 {
-  width: 100vw;
+.input-xxlarge {
+  width: 70vw;
 }
 
-#inputGeral {
-  height: 30px;
-}  
+.input-full {
+  width: 100%;
+}
 
+/* --- Select específico para categorias --- */
+.input-select {
+  height: 44px;
+  width: 30vw;
+  border-radius: 7px;
+  border: 1.85px solid #202020;
+  background-color: #ffffff;
+  color: #202020;
+  font-family: 'JosefinSans-Regular', sans-serif;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
 
+/* --- Botões de submissão --- */
 .btSubmit {
   height: 40px;
   width: 45vw;
@@ -62,45 +77,34 @@
   font-weight: 800;
   font-size: 0.85em;
   text-transform: uppercase;
-
-  padding: 20px 20px 30px 20px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
 }
 
-.btSubmit:hover, #btSubmit2:hover {
+.btSubmit:hover {
   background-color: #09866d;
   cursor: pointer;
 }
 
-.btSubmit:active, #btSubmit2:active {
+.btSubmit:active {
   background-color: #005b49;
   cursor: pointer;
 }
 
-#btSubmit2 {
+/* Variação para segundo botão */
+.btSubmit-secondary {
   background-color: #005b49;
 }
 
-#btSubmit3 {
-  width: 100%;
-  background-color: #005b49;
-}
-#btSubmit3:hover {
+.btSubmit-secondary:hover {
   background-color: #138b73;
-  cursor: pointer;
 }
-#btSubmit3:active {
+
+.btSubmit-secondary:active {
   background-color: #015148;
-  cursor: pointer;
 }
 
-
-
-
-#inputFormSelect {
-  height: 44px;
-  width: 30vw;
-}
-
+/* --- Campo com R$ prefixo --- */
 .prefixo-reais {
   position: absolute;
   left: 10px;
@@ -110,29 +114,52 @@
   color: #cacaca;
 }
 
-
-#inputTextarea {
-  color: #005b49;
-  text-decoration: underline;
-  font-style: italic;
-}
-
+/* --- Área de descrição expansível --- */
 .inputFormDescricao {
   width: 100%;
-  max-width: 100%;
-  box-sizing: border-box; /* muito importante! */
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-#inputTextarea2 {
-  width: 100%;
-  max-width: 100%;
-  height: 8vh;
-  box-sizing: border-box; /* Faz o width considerar o padding/border */
+.inputFormDescricao p {
+  color: #005b49;
+  text-decoration: underline;
+  font-style: italic;
+  cursor: pointer;
 }
 
-#inputFormColor {
+/* Textarea para descrição */
+.textarea-descricao {
+  width: 100%;
+  height: 8vh;
+  resize: vertical;
+  font-family: 'JosefinSans-Regular', sans-serif;
+  font-size: 0.8em;
+  padding: 8px;
+  border-radius: 7px;
+  border: 1.85px solid #202020;
+  box-sizing: border-box;
+}
+
+/* --- Input de cor (caso mantenha colorPicker) --- */
+.input-color {
   width: 40vw;
   height: 43px;
 }
+
+/* --- Responsividade ---
+@media (max-width: 768px) {
+  .input-small,
+  .input-medium,
+  .input-large,
+  .input-xlarge,
+  .input-xxlarge,
+  .input-select {
+    width: 100%;
+  }
+
+  .btSubmit {
+    width: 49%;
+  }
+}*/
