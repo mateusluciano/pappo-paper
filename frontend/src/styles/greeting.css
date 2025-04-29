@@ -12,6 +12,19 @@
     border: none;
 }
 
+.backButton:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px #e4e4e4;
+    border-radius: 5px;
+    transition: ease-in-out 0.35s;
+}
+
+.backButton:active {
+    box-shadow: 0 0 3px #a0a0a0;
+    border-radius: 5px;
+    transition: ease-in-out 0.1s;
+}
+
 .clientName {
     color: #077C6E;
 }  

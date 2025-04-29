@@ -1,6 +1,6 @@
 import { Header } from "../components/header"
 import { Greeting } from "../components/greeting";
-import { MeuFormulario } from '../components/form';
+import { MeuFormulario } from '../components/formProduct';
 
 function AddProduct() {
     return (
