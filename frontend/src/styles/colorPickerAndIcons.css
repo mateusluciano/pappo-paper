@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'JosefinSans-Regular';
+  src: url('../assets/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+}
+
 .colorPicker {
     margin: 10px 0;
     display: flex;
@@ -66,6 +71,8 @@
     box-shadow: 0 0 4px rgba(0,0,0,0.2);
   }
   
+
+  /* MODAL */
   .modalOverlay {
     position: fixed;
     top: 0;
@@ -101,6 +108,22 @@
   
   .modalContent {
     animation: zoomIn 0.2s ease;
+  }
+
+  .closeModal{
+    margin: 15px 0 0 0;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #004d40;
+
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'JosefinSans-Regular', sans-serif;
+  }
+
+  .closeModal:hover {
+    background-color: #09705f;
   }
   
   @keyframes zoomIn {
