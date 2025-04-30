@@ -4,6 +4,7 @@ import { CategoriaSelect } from './categoriaSelect';
 import { InputPreco } from './inputPreco';
 import { InputImagem } from './inputImagem';
 import { DescricaoExpandivel } from './descricaoExpansivel';
+import { InputNomeProduto } from './inputNomeProduto';
 
 export function MeuFormulario() {
   const [form, setForm] = useState({
@@ -14,6 +15,7 @@ export function MeuFormulario() {
     precoCompra: '',
     precoVenda: '',
     estoque: '',
+    estoqueAtual: '',
     descricao: '',
     imageFile: null,
     imageURL: '',
@@ -87,8 +89,19 @@ export function MeuFormulario() {
 
   return (
     <form onSubmit={handleSubmit} className="dynamicForm">
-      <input className="inputForm input-xxlarge" type="text" placeholder="Nome do Produto"
-        value={form.nome} onChange={(e) => atualizarCampo('nome', e.target.value)} />
+      <InputNomeProduto
+      value={form.nome}
+      onSelect={(produto) => {
+        atualizarCampo('nome', produto.nome);
+        atualizarCampo('cBarra', produto.cBarra);
+        atualizarCampo('cSis', produto.cSis);             // ✅ Código interno
+        atualizarCampo('categoria', produto.categoria);   // ✅ Categoria
+        atualizarCampo('estoqueAtual', produto.estoque);       // ✅ Estoque atual (se vier com esse nome)
+        atualizarCampo('precoVenda', produto.precoVenda);
+        atualizarCampo('descricao', produto.descricao);
+      }}
+/>
+
 
       <CategoriaSelect  categorias={categorias}
         value={form.categoria}
@@ -106,10 +119,16 @@ export function MeuFormulario() {
       <InputPreco placeholder="Preço de Venda"
         value={form.precoVenda} onChange={(valor) => atualizarCampo('precoVenda', valor)} />
 
-      <input className="inputForm input-micro" type="number" placeholder="Estoque Inicial"
+      <input className="inputForm input-micro" type="number" placeholder="Quantidade"
         value={form.estoque} onChange={(e) => atualizarCampo('estoque', e.target.value)} />
 
-      <input className="inputForm input-micro" type="text" disabled value={`Estoque Atual: ${estoqueAtual}`} />
+      <input
+        className="inputForm input-micro"
+        type="text"
+        disabled
+        value={`QT Atual: ${form.estoqueAtual}`}
+      />
+
 
       <InputImagem
         imageURL={form.imageURL}
@@ -120,11 +139,11 @@ export function MeuFormulario() {
 
       <DescricaoExpandivel descricao={form.descricao} setDescricao={(desc) => atualizarCampo('descricao', desc)} />
 
-      <button className="btSubmit" type="submit">Cadastrar</button>
+      <button className="btSubmit" type="submit">Adicionar</button>
       <button className="btSubmit btSubmit-secondary" type="button" onClick={() => {
         atualizarCampo('ativo', true);
         handleSubmit({ preventDefault: () => {} });
-      }}>Cadastrar e Ativar</button>
+      }}>Adicionar e Ativar</button>
     </form>
   );
 }

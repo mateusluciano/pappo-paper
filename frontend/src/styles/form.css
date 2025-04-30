@@ -148,6 +148,36 @@
   height: 43px;
 }
 
+
+/* UL LI */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0px;
+
+  background-color: #f4f4f4;
+  border-radius: 7px;
+
+  box-shadow: 0px 1.5px 0px #2020204c;
+}
+
+li {
+  padding: 10px;
+  color: #505050;
+
+  border-bottom: 1.5px solid #2020204c;
+  border-radius: 7px;
+}
+li:hover {
+  background-color: #19b8a5;
+  cursor: pointer;
+}
+li:active {
+  background-color: #046c60;
+  cursor: pointer;
+}
+
+
 /* --- Responsividade ---
 @media (max-width: 768px) {
   .input-small,

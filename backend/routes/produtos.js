@@ -56,16 +56,34 @@ router.post('/produtos', upload.single('imagem'), (req, res) => {
 
 
   // backend/routes/produtos.js
-    router.get('/produtos', (req, res) => {
-    const busca = req.query.nome || '';
-    db.all(
-      'SELECT * FROM produtos WHERE nome LIKE ?',
-      [`%${busca}%`],
-      (err, rows) => {
-        if (err) return res.status(500).json({ error: err.message });
-        res.json(rows);
-      }
-    );
+  router.get('/produtos', (req, res) => {
+    const { nome, cSis, cBarra } = req.query;
+  
+    let query = 'SELECT * FROM produtos';
+    let params = [];
+    let conditions = [];
+  
+    if (nome) {
+      conditions.push('nome LIKE ?');
+      params.push(`%${nome}%`);
+    }
+    if (cSis) {
+      conditions.push('cSis = ?');
+      params.push(cSis);
+    }
+    if (cBarra) {
+      conditions.push('cBarra = ?');
+      params.push(cBarra);
+    }
+  
+    if (conditions.length > 0) {
+      query += ' WHERE ' + conditions.join(' AND ');
+    }
+  
+    db.all(query, params, (err, rows) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json(rows);
+    });
   });
   
 
