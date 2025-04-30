@@ -4,7 +4,7 @@ import { CategoriaSelect } from './categoriaSelect';
 import { InputPreco } from './inputPreco';
 import { InputImagem } from './inputImagem';
 import { DescricaoExpandivel } from './descricaoExpansivel';
-import { InputNomeProduto } from './inputNomeProduto';
+import { InputNomeProduto } from './inputNomeBusca';
 
 export function MeuFormulario() {
   const [form, setForm] = useState({
