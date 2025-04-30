@@ -15,6 +15,7 @@ export function MeuFormulario() {
     precoVenda: '',
     estoque: '',
     descricao: '',
+    imageFile: null,
     imageURL: '',
     ativo: true,
   });
@@ -33,10 +34,52 @@ export function MeuFormulario() {
   }, []);
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Dados enviados:', form);
+  
+    const formData = new FormData();
+    for (const key in form) {
+      if (key !== 'imageURL' && key !== 'imageFile') {
+        formData.append(key, form[key]);
+      }
+    }
+    if (form.imageFile) {
+      formData.append('imagem', form.imageFile);
+    }
+    
+  
+    try {
+      const response = await fetch('http://localhost:3001/api/produtos', {
+        method: 'POST',
+        body: formData
+      });
+  
+      if (!response.ok) throw new Error(`Erro: ${response.status}`);
+  
+      const data = await response.json();
+      console.log('Produto cadastrado:', data);
+      alert('Produto cadastrado com sucesso!');
+
+      setForm({
+        nome: '',
+        categoria: '',
+        cBarra: '',
+        cSis: '',
+        precoCompra: '',
+        precoVenda: '',
+        estoque: '',
+        descricao: '',
+        imageFile: null,
+        imageURL: '',
+        ativo: true
+      });
+      
+    } catch (error) {
+      console.error('Erro ao enviar:', error);
+      alert('Erro ao cadastrar. Tente novamente.');
+    }
   };
+  
 
   const atualizarCampo = (campo, valor) => {
     setForm((prev) => ({ ...prev, [campo]: valor }));
@@ -68,7 +111,12 @@ export function MeuFormulario() {
 
       <input className="inputForm input-micro" type="text" disabled value={`Estoque Atual: ${estoqueAtual}`} />
 
-      <InputImagem imageURL={form.imageURL} setImageURL={(url) => atualizarCampo('imageURL', url)} />
+      <InputImagem
+        imageURL={form.imageURL}
+        setImageURL={(url) => atualizarCampo('imageURL', url)}
+        setImageFile={(file) => atualizarCampo('imageFile', file)}
+      />
+
 
       <DescricaoExpandivel descricao={form.descricao} setDescricao={(desc) => atualizarCampo('descricao', desc)} />
 
