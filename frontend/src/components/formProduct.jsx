@@ -8,6 +8,7 @@ import { InputNomeProduto } from './inputNomeBusca';
 
 export function MeuFormulario() {
   const [form, setForm] = useState({
+    id: null,
     nome: '',
     categoria: '',
     cBarra: '',
@@ -22,6 +23,11 @@ export function MeuFormulario() {
     ativo: true,
   });
 
+  const [nomeOriginal, setNomeOriginal] = useState('');
+
+
+  
+
   const [categorias, setCategorias] = useState([]);
   const [estoqueAtual] = useState(0); // Suponha que virá do banco
 
@@ -34,35 +40,71 @@ export function MeuFormulario() {
         alert('Erro ao carregar categorias do banco.');
       });
   }, []);
+
+  useEffect(() => {
+    if (form.nome.trim() === '') {
+      atualizarCampo('id', null);
+      atualizarCampo('estoqueAtual', '');
+    }
+  }, [form.nome]);
+  
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const isNumero = (v) => !isNaN(parseFloat(v)) && isFinite(v);
+
+    if (
+      !form.categoria ||
+      !form.precoCompra ||
+      !form.precoVenda ||
+      !form.estoque ||
+      !form.cSis
+    ) {
+      alert('Preencha os campos obrigatórios: preço de compra, preço de venda, quantidade e código interno.');
+      return;
+    }
+    
+    
   
     const formData = new FormData();
     for (const key in form) {
-      if (key !== 'imageURL' && key !== 'imageFile') {
+      if (key !== 'imageURL' && key !== 'imageFile' && key !== 'estoqueAtual') {
         formData.append(key, form[key]);
       }
     }
+  
     if (form.imageFile) {
       formData.append('imagem', form.imageFile);
     }
-    
   
     try {
-      const response = await fetch('http://localhost:3001/api/produtos', {
-        method: 'POST',
-        body: formData
-      });
+      let response;
+  
+      if (form.id) {
+        // Atualização: soma a quantidade nova ao estoque atual
+        const novaQuantidade = Number(form.estoque) + Number(form.estoqueAtual);
+        formData.set('estoque', novaQuantidade);
+  
+        response = await fetch(`http://localhost:3001/api/produtos/${form.id}`, {
+          method: 'PUT',
+          body: formData
+        });
+      } else {
+        response = await fetch('http://localhost:3001/api/produtos', {
+          method: 'POST',
+          body: formData
+        });
+      }
   
       if (!response.ok) throw new Error(`Erro: ${response.status}`);
   
       const data = await response.json();
-      console.log('Produto cadastrado:', data);
-      alert('Produto cadastrado com sucesso!');
-
+      alert(form.id ? 'Produto atualizado com sucesso!' : 'Produto cadastrado com sucesso!');
+  
+      // Reset
       setForm({
+        id: null,
         nome: '',
         categoria: '',
         cBarra: '',
@@ -70,17 +112,18 @@ export function MeuFormulario() {
         precoCompra: '',
         precoVenda: '',
         estoque: '',
+        estoqueAtual: '',
         descricao: '',
         imageFile: null,
         imageURL: '',
         ativo: true
       });
-      
     } catch (error) {
       console.error('Erro ao enviar:', error);
-      alert('Erro ao cadastrar. Tente novamente.');
+      alert('Erro ao salvar produto.');
     }
   };
+  
   
 
   const atualizarCampo = (campo, valor) => {
@@ -90,28 +133,66 @@ export function MeuFormulario() {
   return (
     <form onSubmit={handleSubmit} className="dynamicForm">
       <InputNomeProduto
-      value={form.nome}
-      onSelect={(produto) => {
-        atualizarCampo('nome', produto.nome);
-        atualizarCampo('cBarra', produto.cBarra);
-        atualizarCampo('cSis', produto.cSis);             // ✅ Código interno
-        atualizarCampo('categoria', produto.categoria);   // ✅ Categoria
-        atualizarCampo('estoqueAtual', produto.estoque);       // ✅ Estoque atual (se vier com esse nome)
-        atualizarCampo('precoVenda', produto.precoVenda);
-        atualizarCampo('descricao', produto.descricao);
-      }}
-/>
+        value={form.nome}
+        onSelect={(produto) => {
+          setNomeOriginal(produto.nome);
+          atualizarCampo('id', produto.id);
+          atualizarCampo('nome', produto.nome);
+          atualizarCampo('cBarra', produto.cBarra);
+          atualizarCampo('cSis', produto.cSis);
+          atualizarCampo('categoria', produto.categoria);
+          atualizarCampo('estoqueAtual', produto.estoque);
+          atualizarCampo('precoVenda', produto.precoVenda);
+          atualizarCampo('descricao', produto.descricao);
+        }}
+        onClear={() => {
+          atualizarCampo('id', null);
+          atualizarCampo('cBarra', '');
+          atualizarCampo('cSis', '');
+          atualizarCampo('categoria', '');
+          atualizarCampo('estoqueAtual', '');
+          setNomeOriginal('');
+        }}
+        onInputChange={(valor) => {
+          atualizarCampo('nome', valor);
+          if (form.id && valor !== nomeOriginal) {
+            atualizarCampo('id', null);
+            atualizarCampo('cBarra', '');
+            atualizarCampo('cSis', '');
+            atualizarCampo('categoria', '');
+            atualizarCampo('estoqueAtual', '');
+            setNomeOriginal('');
+          }
+        }}
+      />
 
 
-      <CategoriaSelect  categorias={categorias}
+
+
+      <CategoriaSelect
+        categorias={categorias}
         value={form.categoria}
-        onChange={(value) => atualizarCampo('categoria', value)} />
+        onChange={(value) => atualizarCampo('categoria', value)}
+        disabled={!!form.id}
+      />
 
-      <input className="inputForm input-xxlarge" type="number" placeholder="Código de Barras"
-        value={form.cBarra} onChange={(e) => atualizarCampo('cBarra', e.target.value)} />
+      <input
+        className={`inputForm input-xxlarge ${form.id ? 'input-block' : ''}`}
+        type="text"
+        placeholder="Código de Barras"
+        value={form.cBarra}
+        onChange={(e) => atualizarCampo('cBarra', e.target.value)}
+        disabled={!!form.id}
+      />
 
-      <input className="inputForm input-micro" type="text" placeholder="Código Interno"
-        value={form.cSis} onChange={(e) => atualizarCampo('cSis', e.target.value)} />
+      <input
+        className={`inputForm input-micro ${form.id ? 'input-block' : ''}`}
+        type="text"
+        placeholder="Código Interno"
+        value={form.cSis}
+        onChange={(e) => atualizarCampo('cSis', e.target.value)}
+        disabled={!!form.id}
+      />
 
       <InputPreco placeholder="Preço de Compra"
         value={form.precoCompra} onChange={(valor) => atualizarCampo('precoCompra', valor)} />
@@ -123,7 +204,7 @@ export function MeuFormulario() {
         value={form.estoque} onChange={(e) => atualizarCampo('estoque', e.target.value)} />
 
       <input
-        className="inputForm input-micro"
+        className="inputForm input-micro input-block"
         type="text"
         disabled
         value={`QT Atual: ${form.estoqueAtual}`}

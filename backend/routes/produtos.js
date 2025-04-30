@@ -85,6 +85,31 @@ router.post('/produtos', upload.single('imagem'), (req, res) => {
       res.json(rows);
     });
   });
+
+
+  router.put('/produtos/:id', upload.single('imagem'), (req, res) => {
+    const {
+      nome, categoria, cBarra, cSis,
+      precoCompra, precoVenda, estoque, descricao
+    } = req.body;
+    const imageURL = req.file ? `/uploads/${req.file.filename}` : req.body.imageURL;
+  
+    db.run(
+      `UPDATE produtos SET 
+        precoCompra = ?, 
+        precoVenda = ?, 
+        estoque = ?, 
+        descricao = ?, 
+        imageURL = ?
+       WHERE id = ?`,
+      [precoCompra, precoVenda, estoque, descricao, imageURL, req.params.id],
+      function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ updated: true });
+      }
+    );
+  });
+  
   
 
 module.exports = router;

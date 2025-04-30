@@ -23,6 +23,11 @@
   box-sizing: border-box;
 }
 
+.input-block {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* --- Tamanhos de input padronizados --- */
 .input-micro {
   width: 21vw;
