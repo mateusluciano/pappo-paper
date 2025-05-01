@@ -5,6 +5,7 @@ import { InputPreco } from './inputPreco';
 import { InputImagem } from './inputImagem';
 import { DescricaoExpandivel } from './descricaoExpansivel';
 import { InputNomeProduto } from './inputNomeBusca';
+import { InputCodigoBarras } from './inputCodigoBarras';
 
 export function MeuFormulario() {
   const [form, setForm] = useState({
@@ -176,14 +177,24 @@ export function MeuFormulario() {
         disabled={!!form.id}
       />
 
-      <input
-        className={`inputForm input-xxlarge ${form.id ? 'input-block' : ''}`}
-        type="text"
-        placeholder="Código de Barras"
+      <InputCodigoBarras
         value={form.cBarra}
-        onChange={(e) => atualizarCampo('cBarra', e.target.value)}
-        disabled={!!form.id}
+        onInputChange={(val) => atualizarCampo('cBarra', val)}
+        onSelect={(produto) => {
+          setNomeOriginal(produto.nome); // necessário para preservar lógica do nome
+          atualizarCampo('id', produto.id);
+          atualizarCampo('nome', produto.nome);
+          atualizarCampo('cBarra', produto.cBarra);
+          atualizarCampo('cSis', produto.cSis);
+          atualizarCampo('categoria', produto.categoria);
+          atualizarCampo('estoqueAtual', produto.estoque);
+          atualizarCampo('precoVenda', produto.precoVenda);
+          atualizarCampo('descricao', produto.descricao);
+        }}
+        onClear={() => atualizarCampo('cBarra', '')}
       />
+
+
 
       <input
         className={`inputForm input-micro ${form.id ? 'input-block' : ''}`}

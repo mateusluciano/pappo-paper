@@ -8,6 +8,7 @@ export function InputNomeProduto({ value, onSelect, onClear, onInputChange }) {
   const ignoreNextFetch = useRef(false);
 
   useEffect(() => {
+    ignoreNextFetch.current = true;
     setBusca(value);
   }, [value]);
 
