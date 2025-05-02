@@ -11,8 +11,7 @@ app.use('/api', categoriaRoutes); // ✅ Aqui ele usará /api/categorias automat
 const produtoRoutes = require('./routes/produtos');
 app.use('/api', produtoRoutes); // ✅ Aqui ele usará /api/produtos automaticamente
 
-app.use('/uploads', express.static('public/uploads/produtos'));
-
+app.use('/uploads', express.static('public/uploads'));
 
 app.listen(3001, () => {
   console.log('🚀 Backend rodando em http://localhost:3001');

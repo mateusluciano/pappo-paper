@@ -22,9 +22,18 @@ body {
 }
 
 .divisor {
-  width: 93vw;
+  width: 93%;
   height: 1.45px;
   background-color: #077C6E;
+  border-radius: 50px;
+}
+
+.divisorThin {
+  width: 93%;
+  height: 0.65px;
+  margin: -7px 0px -7px 0px;
+
+  background-color: #202020;
   border-radius: 50px;
 }
 
@@ -53,4 +62,13 @@ body {
   background-color: #077C6E;
 
   border-radius: 0px 5px 5px 0px;
+}
+
+.basicText {
+  font-family: 'JosefinSans-Regular', sans-serif;
+  text-transform: uppercase;
+  
+  font-size: 0.75em;
+  font-weight: 700;
+  color:#077C6E;
 }

@@ -4,13 +4,13 @@ import { Category } from './category';
 export function Menu() {
     return (
         <div className="menuCategories">
-            <Category titulo="Cadernos e Papéis" url="cadernos.png" />
+            <Category titulo="Cadernos e Papéis" url="cadernos.png" classe="category"/>
 
-            <Category titulo="Arte e Criatividade" url="tintas.png" />
+            <Category titulo="Arte e Criatividade" url="tintas.png" classe="category"/>
 
-            <Category titulo="Organização e Escritório" url="organizacao.png" />
+            <Category titulo="Organização e Escritório" url="organizacao.png" classe="category"/>
 
-            <Category titulo="Adesivos e Decoração" url="adesivos.png" />
+            <Category titulo="Adesivos e Decoração" url="adesivos.png" classe="category"/>
         </div>
     )
 }
