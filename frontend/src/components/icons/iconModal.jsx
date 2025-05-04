@@ -1,5 +1,5 @@
-import '../styles/colorPickerAndIcons.css';
-import '../styles/form.css'
+import '../../styles/colorPickerAndIcons.css';
+import '../../styles/form.css'
 
 export function IconModal({ icons, selectedIcon, onSelect, onClose }) {
   return (

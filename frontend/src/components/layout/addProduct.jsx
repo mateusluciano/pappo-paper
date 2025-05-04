@@ -1,11 +1,11 @@
-import '../styles/form.css';
+import '../../styles/form.css';
 import { useState, useEffect } from 'react';
-import { CategoriaSelect } from './categoriaSelect';
-import { InputPreco } from './inputPreco';
-import { InputImagem } from './inputImagem';
-import { DescricaoExpandivel } from './descricaoExpansivel';
-import { InputNomeProduto } from './inputNomeBusca';
-import { InputCodigoBarras } from './inputCodigoBarras';
+import { CategoriaSelect } from '../category and cards/categoriaSelect';
+import { InputPreco } from '../inputBuscas/inputPreco';
+import { InputImagem } from '../inputBuscas/inputImagem';
+import { DescricaoExpandivel } from '../helpers/descricaoExpansivel';
+import { InputNomeProduto } from '../inputBuscas/inputNomeBusca';
+import { InputCodigoBarras } from '../inputBuscas/inputCodigoBarras';
 
 export function MeuFormulario() {
   const [form, setForm] = useState({

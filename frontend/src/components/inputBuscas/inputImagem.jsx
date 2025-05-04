@@ -1,4 +1,4 @@
-import '../styles/form.css';
+import '../../styles/form.css';
 
 export function InputImagem({ setImageFile, setImageURL, imageURL }) {
   const handleImageUpload = (e) => {

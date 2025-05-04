@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../styles/category.css';
+import '../../styles/category.css';
 
 
 export function Category({ titulo, url, link, classe, preco }) {
@@ -11,7 +11,7 @@ export function Category({ titulo, url, link, classe, preco }) {
     <Link to={link} className={classe}>
       <img className="imgCategory" src={imageSrc} alt={titulo} />
       <h3 className="textCategory">{titulo}</h3>
-      <p className="textPrice">R$ {preco}</p>
+      <p className="textPrice"> {preco ? `R$ ${preco}` : ''}</p>
     </Link>
   );
 }

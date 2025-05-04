@@ -1,5 +1,5 @@
-import { Greeting } from "../components/greeting";
-import { MeuFormulario } from '../components/formCategory';
+import { Greeting } from "../components/helpers/greeting";
+import { MeuFormulario } from '../components/forms/formCategory';
 
 function AddCategory() {
     return (

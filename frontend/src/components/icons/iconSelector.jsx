@@ -1,5 +1,5 @@
 import { IconModal } from './iconModal';
-import '../styles/colorPickerAndIcons.css';
+import '../../styles/colorPickerAndIcons.css';
 
 export function IconSelector({ icons, selected, onSelect, showModal, setShowModal }) {
     const maxVisible = 4;

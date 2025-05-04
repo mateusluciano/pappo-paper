@@ -1,5 +1,5 @@
-import '../styles/section.css'
-import { InputBuscaGenerica } from './inputNomeGenerica'
+import '../../styles/section.css'
+import { InputBuscaGenerica } from '../inputBuscas/inputNomeGenerica.jsx'
 import { MenuProdutos } from './menuProdutos.jsx'
 
 export function Section({form, atualizarCampo}) {
@@ -28,7 +28,6 @@ export function Section({form, atualizarCampo}) {
                     onInputChange={(val) => atualizarCampo('cBarra', val)}
                     />
                 </div>
-                <hr className="divisor" />
                 <div className="menu">
                     <MenuProdutos />
                 </div>

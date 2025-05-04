@@ -1,6 +1,6 @@
-import '../styles/menu.css';
+import '../../styles/menu.css';
 import { useEffect, useState } from 'react';
-import { Category } from './category';
+import { Category } from '../category and cards/card';
 
 export function MenuProdutos() {
   const [produtos, setProdutos] = useState([]);
@@ -18,7 +18,7 @@ export function MenuProdutos() {
         <Category
           key={produto.id}
           titulo={produto.nome}
-          url={produto.imageURL || 'placeholder.png'}
+          url={produto.imageURL}
           preco={produto.precoVenda}
           classe="product"
         />

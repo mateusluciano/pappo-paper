@@ -1,5 +1,5 @@
-import '../styles/header.css'
-import Cart from '../assets/cart-outline-filled.svg?react'
+import '../../styles/header.css'
+import Cart from '../../assets/cart-outline-filled.svg?react'
 
 export function Header () {
     return (

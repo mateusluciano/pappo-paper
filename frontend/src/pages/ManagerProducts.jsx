@@ -1,6 +1,6 @@
-import { Greeting } from '../components/greeting';
+import { Greeting } from '../components/helpers/greeting';
 import '../styles/App.css';
-import { Section } from '../components/divSection';
+import { Section } from '../components/layout/managerProdutos';
 import { useState } from 'react';
 
 

@@ -1,37 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
-import { useDebouncedValue } from '../hooks/useDebouncedValue';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 
-export function InputBuscaGenerica({
-  tipo = 'instantaneo', // 'instantaneo' ou 'filtro'
-  campoBusca = 'nome',
-  placeholder = 'Buscar...',
-  largura = 'input-medium',
-  value,
-  onSelect,
-  onClear,
-  onInputChange,
-  apiURL = 'http://localhost:3001/api/produtos'
-}) {
-  const [busca, setBusca] = useState(value || '');
+export function InputNomeProduto({ value, onSelect, onClear, onInputChange }) {
+  const [busca, setBusca] = useState(value);
   const [sugestoes, setSugestoes] = useState([]);
   const debouncedBusca = useDebouncedValue(busca, 300);
   const ignoreNextFetch = useRef(false);
 
   useEffect(() => {
     ignoreNextFetch.current = true;
-    setBusca(value || '');
+    setBusca(value);
   }, [value]);
 
   useEffect(() => {
-    if (tipo !== 'instantaneo') return;
-
     if (ignoreNextFetch.current) {
       ignoreNextFetch.current = false;
       return;
     }
 
     if (debouncedBusca.trim().length >= 2) {
-      fetch(`${apiURL}?${campoBusca}=${encodeURIComponent(debouncedBusca)}`)
+      fetch(`http://localhost:3001/api/produtos?nome=${encodeURIComponent(debouncedBusca)}`)
         .then(res => res.json())
         .then(data => setSugestoes(data))
         .catch(err => console.error('Erro na busca:', err));
@@ -41,33 +29,35 @@ export function InputBuscaGenerica({
         onClear();
       }
     }
-  }, [debouncedBusca, campoBusca, apiURL, tipo]);
+  }, [debouncedBusca]);
 
-  const handleSelect = (item) => {
+  const handleSelect = (produto) => {
     ignoreNextFetch.current = true;
-    setBusca(item[campoBusca]);
+    setBusca(produto.nome);
     setSugestoes([]);
-    if (typeof onSelect === 'function') onSelect(item);
+    onSelect(produto);
   };
 
   return (
     <div>
       <input
-        className={`inputForm ${largura}`}
+        className="inputForm input-xxlarge"
         type="text"
-        placeholder={placeholder}
+        placeholder="Nome do Produto"
         value={busca}
         onChange={(e) => {
           const valor = e.target.value;
           setBusca(valor);
-          if (typeof onInputChange === 'function') onInputChange(valor);
+          if (typeof onInputChange === 'function') {
+            onInputChange(valor);
+          }
         }}
       />
-      {tipo === 'instantaneo' && sugestoes.length > 0 && (
+      {sugestoes.length > 0 && (
         <ul>
-          {sugestoes.map((item) => (
-            <li key={item.id} onClick={() => handleSelect(item)}>
-              {item[campoBusca]}
+          {sugestoes.map((p) => (
+            <li key={p.id} onClick={() => handleSelect(p)}>
+              {p.nome}
             </li>
           ))}
         </ul>

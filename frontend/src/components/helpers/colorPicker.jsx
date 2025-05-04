@@ -1,4 +1,4 @@
-import '../styles/colorPickerAndIcons.css';
+import '../../styles/colorPickerAndIcons.css';
 
 export function ColorPicker({ baseColor, selectedColor, onBaseClick, onToneClick, options }) {
     return (

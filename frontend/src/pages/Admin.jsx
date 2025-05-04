@@ -1,5 +1,5 @@
-import { Greeting } from "../components/greeting";  
-import { Settings } from "../components/settings";
+import { Greeting } from "../components/helpers/greeting";  
+import { Settings } from "../components/layout/admin";
 
 function Admin() {
     return (

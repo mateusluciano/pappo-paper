@@ -1,4 +1,4 @@
-import '../styles/form.css';
+import '../../styles/form.css';
 
 export function InputPreco({ value, onChange, placeholder }) {
     const formatarValor = (valor) => {

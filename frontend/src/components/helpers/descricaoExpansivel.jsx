@@ -1,4 +1,4 @@
-import '../styles/form.css';
+import '../../styles/form.css';
 import { useState, useEffect } from 'react';
 
 export function DescricaoExpandivel({ descricao, setDescricao }) {

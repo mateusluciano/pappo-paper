@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useDebouncedValue } from '../hooks/useDebouncedValue';
+import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 
 export function InputCodigoBarras({ value, onSelect, onClear, onInputChange }) {
   const [codigo, setCodigo] = useState(value || '');

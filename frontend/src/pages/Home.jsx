@@ -1,7 +1,7 @@
 import '../styles/App.css'
-import { Checkout } from '../components/checkout'
-import { Menu } from '../components/menu'
-import { Greeting } from '../components/greeting' 
+import { Checkout } from '../components/helpers/checkout'
+import { Menu } from '../components/layout/menu'
+import { Greeting } from '../components/helpers/greeting' 
 
 function App() {
 
