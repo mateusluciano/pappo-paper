@@ -1,5 +1,4 @@
 import { Greeting } from '../components/helpers/greeting';
-import '../styles/App.css';
 import { Section } from '../components/layout/managerProdutos';
 import { useState } from 'react';
 
