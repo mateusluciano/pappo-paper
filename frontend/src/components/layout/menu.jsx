@@ -1,4 +1,3 @@
-import '../../styles/menu.css';
 import { Category } from '../category and cards/card';      
 
 export function Menu() {

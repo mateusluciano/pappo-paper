@@ -1,8 +1,6 @@
 import { Typewriter } from 'react-simple-typewriter';
 import { useNavigate } from 'react-router-dom';
 import Back from '../../assets/back.svg?react';
-import '../../styles/greeting.css';
-
 
 export function Greeting({clientName, onBack}) {
   const navigate = useNavigate();

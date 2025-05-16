@@ -1,4 +1,3 @@
-import '../../styles/form.css';
 import { useState, useEffect } from 'react';
 import { CategoriaSelect } from '../category and cards/categoriaSelect';
 import { InputPreco } from '../inputBuscas/inputPreco';

@@ -1,5 +1,3 @@
-import '../../styles/checkout.css'
-
 export function Checkout() {
     return (
         <div className="checkout">

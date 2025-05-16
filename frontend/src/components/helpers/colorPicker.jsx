@@ -1,5 +1,3 @@
-import '../../styles/colorPickerAndIcons.css';
-
 export function ColorPicker({ baseColor, selectedColor, onBaseClick, onToneClick, options }) {
     return (
       <div className="colorPicker">

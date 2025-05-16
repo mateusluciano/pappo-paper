@@ -1,4 +1,3 @@
-import '../../styles/menu.css';
 import { useEffect, useState } from 'react';
 import { Category } from '../category and cards/card';
 

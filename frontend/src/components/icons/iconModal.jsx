@@ -1,6 +1,3 @@
-import '../../styles/colorPickerAndIcons.css';
-import '../../styles/form.css'
-
 export function IconModal({ icons, selectedIcon, onSelect, onClose }) {
   return (
     <div className="modalOverlay" onClick={onClose}>

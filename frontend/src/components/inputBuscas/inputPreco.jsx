@@ -1,5 +1,3 @@
-import '../../styles/form.css';
-
 export function InputPreco({ value, onChange, placeholder }) {
     const formatarValor = (valor) => {
       valor = valor.replace(/\D/g, '');

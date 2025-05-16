@@ -1,5 +1,3 @@
-import '../../styles/form.css';
-
 export function InputImagem({ setImageFile, setImageURL, imageURL }) {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];

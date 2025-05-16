@@ -1,5 +1,3 @@
-import '../../styles/form.css';
-import '../../styles/colorPickerAndIcons.css';
 import { useState } from 'react';
 import { ColorPicker } from '../helpers/colorPicker';
 import { IconSelector } from '../icons/iconSelector';

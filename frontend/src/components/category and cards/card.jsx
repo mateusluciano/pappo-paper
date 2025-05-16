@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import '../../styles/category.css';
 
 
 export function Category({ titulo, url, link, classe, preco }) {

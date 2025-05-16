@@ -1,4 +1,3 @@
-import '../../styles/section.css'
 import { InputBuscaGenerica } from '../inputBuscas/inputNomeGenerica.jsx'
 import { MenuProdutos } from './menuProdutos.jsx'
 
