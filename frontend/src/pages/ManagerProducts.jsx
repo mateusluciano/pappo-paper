@@ -12,8 +12,7 @@ function ManagerProducts() {
         <>
             <Greeting clientName="Admin" />
             <h1 className='basicTitle'>Gerenciar Produtos</h1>
-            <Section form={form} atualizarCampo={atualizarCampo} />
-
+            <Section form={form} atualizarCampo={atualizarCampo}/>
         </>
     )
 }
